@@ -197,10 +197,12 @@
 
 {% block scripts %}
 <script>
+// Sort function — uses direct URL redirect, bypasses form issues
 function doSort(key) {
-  var form = document.getElementById('marketsForm');
-  document.getElementById('sortInput').value = key;
-  form.submit();
+  var q = document.getElementById('searchInput') ? document.getElementById('searchInput').value : '';
+  var url = '/markets?sort=' + encodeURIComponent(key);
+  if (q) url += '&q=' + encodeURIComponent(q);
+  window.location.href = url;
 }
 </script>
 {% endblock %}
