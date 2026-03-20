@@ -22,12 +22,15 @@
     </div>
   </div>
 
-  <!-- TOP ROW: F&G + MARKET SUMMARY -->
+  <!-- TOP ROW: F&G + BTC CONTEXT + MARKET SUMMARY -->
   <div class="row g-4 mb-4">
-    <div class="col-lg-5">
+    <div class="col-lg-4">
       {% include 'partials/fear_greed_widget.html' %}
     </div>
-    <div class="col-lg-7">
+    <div class="col-lg-4">
+      {% include 'partials/market_context.html' %}
+    </div>
+    <div class="col-lg-4">
       <div class="card h-100">
         <div class="card-body p-4">
           <div class="section-label mb-3">📡 Market Snapshot</div>
