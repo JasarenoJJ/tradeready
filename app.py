@@ -31,7 +31,7 @@ print(f"[Config] CMC_API_KEY = {'SET ‚úÖ' if Config.CMC_API_KEY else 'NOT SET ‚ù
 def set_headers(response):
     response.headers["Content-Security-Policy"] = (
         "default-src 'self'; "
-        "script-src 'self' https://cdn.jsdelivr.net; "
+        "script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; "
         "style-src 'self' https://cdn.jsdelivr.net "
                    "https://fonts.googleapis.com "
                    "https://fonts.gstatic.com 'unsafe-inline'; "
