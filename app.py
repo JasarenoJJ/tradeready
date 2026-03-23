@@ -8,7 +8,8 @@ from config import Config
 from utils.api_client import CryptoAPI
 from utils.cache import Cache
 from utils.data_processor import (
-    format_currency, format_percentage, process_market_data
+    format_currency, format_percentage, process_market_data,
+    get_market_environment
 )
 from utils.binance_rsi import fetch_rsi_batch, fetch_volume_batch
 import threading
@@ -154,11 +155,12 @@ def inject_globals():
 
 # ─── HELPERS ─────────────────────────────────────────────────────────────────
 def get_processed_coins():
-    """Get market data with real Binance RSI and volume injected."""
+    """Get market data with real RSI, volume and BTC condition injected."""
     markets   = cache.get("markets") or []
     rsi_cache = cache.get("rsi_cache") or {}
     vol_cache = cache.get("vol_cache") or {}
-    return process_market_data(markets, rsi_cache, vol_cache)
+    btc_data  = cache.get("btc_data") or {}
+    return process_market_data(markets, rsi_cache, vol_cache, btc_data)
 
 # ─── ROUTES ──────────────────────────────────────────────────────────────────
 @app.route("/")
@@ -198,6 +200,9 @@ def index():
             "overbought": len([c for c in processed if c.get("signal_rsi") and c["signal_rsi"] >= 70]),
         }
 
+    btc_data   = cache.get("btc_data") or {}
+    market_env = get_market_environment(btc_data)
+
     return render_template("index.html",
         loading=loading,
         last_updated=cache.get_timestamp("markets"),
@@ -208,6 +213,7 @@ def index():
         oversold=oversold,
         overbought=overbought,
         coins_summary=coins_summary,
+        market_env=market_env,
     )
 
 
