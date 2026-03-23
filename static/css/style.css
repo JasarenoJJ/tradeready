@@ -839,3 +839,84 @@ body {
 .markets-table .font-mono { color: var(--text) !important; }
 .markets-table .positive { color: var(--green) !important; }
 .markets-table .negative { color: var(--red) !important; }
+
+/* ── NEW SIGNAL CARD BADGES ───────────────────────── */
+.env-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.58rem;
+  font-family: 'DM Mono', monospace;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.env-badge.env-bullish {
+  background: rgba(13,255,140,0.1);
+  color: var(--green);
+  border: 1px solid rgba(13,255,140,0.25);
+}
+
+.env-badge.env-bearish {
+  background: rgba(255,58,92,0.1);
+  color: var(--red);
+  border: 1px solid rgba(255,58,92,0.25);
+}
+
+.env-badge.env-caution {
+  background: rgba(255,200,50,0.1);
+  color: var(--yellow);
+  border: 1px solid rgba(255,200,50,0.25);
+}
+
+.env-badge.env-neutral {
+  background: rgba(59,139,255,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(59,139,255,0.25);
+}
+
+/* CONFIDENCE ROW */
+.confidence-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.62rem;
+  font-family: 'DM Mono', monospace;
+  margin-top: 4px;
+}
+
+.confidence-label { color: var(--muted); }
+.confidence-value { font-weight: 700; }
+
+/* BTC BEAR MARKET WARNING on homepage */
+.market-env-banner {
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.market-env-banner.bear {
+  background: rgba(255,58,92,0.08);
+  border: 1px solid rgba(255,58,92,0.3);
+  color: var(--red);
+}
+
+.market-env-banner.caution {
+  background: rgba(255,200,50,0.08);
+  border: 1px solid rgba(255,200,50,0.3);
+  color: var(--yellow);
+}
+
+.market-env-banner.bull {
+  background: rgba(13,255,140,0.08);
+  border: 1px solid rgba(13,255,140,0.3);
+  color: var(--green);
+}
